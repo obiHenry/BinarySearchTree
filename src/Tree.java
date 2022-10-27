@@ -21,9 +21,13 @@ public class Tree {
         }
         
         if (value < subTreeNode.getData()){
+            System.out.println(subTreeNode.getData());
+//            System.out.println(delete(subTreeNode.getLeftChild(), value));
+            System.out.println("ther" +subTreeNode.getLeftChild());
             subTreeNode.setLeftChild(delete(subTreeNode.getLeftChild(), value));
 
         }else if (value > subTreeNode.getData()){
+//            System.out.println(delete(subTreeNode.getRightChild(), value));
             subTreeNode.setRightChild(delete(subTreeNode.getRightChild(), value));
 
         }else {
@@ -34,6 +38,18 @@ public class Tree {
             } else if (subTreeNode.getRightChild() == null) {
                 return  subTreeNode.getLeftChild();
             }
+
+            // replace the value in the subtreenode with the smallest value
+            // from the right subtree
+            System.out.println(subTreeNode.getLeftChild().max());
+//            subTreeNode.setData(subTreeNode.getRightChild().min());
+            subTreeNode.setData(subTreeNode.getLeftChild().max());
+
+            // delete the node that has the smallest value the right subtree
+//            subTreeNode.setRightChild(delete(subTreeNode.getRightChild(), subTreeNode.getData()));
+
+            subTreeNode.setLeftChild(delete(subTreeNode.getLeftChild(), subTreeNode.getData()));
+
         }
 
         return subTreeNode;
